@@ -1,0 +1,166 @@
+@import "../../root.scss";
+
+$top-bar-height: 2rem;
+
+.mermaid-panel {
+    display: flex;
+    height: 100%;
+    background-color: rgb(172, 172, 172);
+
+    .left {
+        width: 40%;
+        min-width: 500px;
+        background-color: var(--color-primary);
+        border-radius: 0.5rem;
+
+        .top-bar {
+            border-top-right-radius: 0.5rem;
+            border-top-left-radius: 0.5rem;
+            background-color: rgb(57, 107, 32);
+            height: $top-bar-height;
+            display: flex;
+            justify-content: left;
+            align-items: end;
+            padding: 0.3rem 0.5rem;
+            justify-content: space-between;
+            align-items: center;
+
+            .top-bar-item {
+                background-color: var(--color-primary);
+                border: 1px solid var(--color-secondary);
+                border-radius: 0.4rem;
+                margin-right: 0.5rem;
+                padding: 0.2rem 0.5rem;
+            }
+
+            .auto-sync {
+                color: var(--color-primary);
+                padding-right: 1rem;
+
+                span.MuiFormControlLabel-label {
+                    font-size: 80%;
+                    font-weight: bold;
+                }
+            }
+        }
+
+
+        section {
+            height: calc(50vh - $top-bar-height) !important;
+        }
+
+        .editor-area {
+            position: relative;
+
+            .editor-mermaid {
+                height: 100%;
+            }
+
+            .control {
+                position: absolute;
+                bottom: 1rem;
+                right: 1.5rem;
+
+                .control-item {
+                    cursor: pointer;
+
+                    .icon-copy {
+                        color: rgb(185, 181, 181);
+                    }
+                }
+
+            }
+        }
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: calc(50vh - 3px - 2rem - 0.6rem); // 3px border, 2rem padding root, 0.6rem padding top-bar
+            border-top: 1px solid gray;
+            border-radius: 0.2rem;
+
+            .message-list {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                max-height: 50vh;
+                overflow-y: scroll;
+                border-bottom: 1px solid gray;
+                padding: 1rem;
+                position: relative;
+
+                .message-item {
+                    width: fit-content;
+                    height: fit-content;
+                    color: var(--color-secondary);
+                    margin-bottom: 5px;
+
+                    .sender-name {
+                        font-weight: bold;
+                    }
+
+                    .message-content {
+                        font-style: italic;
+                        word-wrap: break-word;
+                        word-break: break-word;
+                        white-space: pre-line;
+                    }
+                }
+            }
+
+            .message-list::-webkit-scrollbar {
+                display: none;
+            }
+
+            .input-area {
+                display: flex;
+                padding: 0.5rem 1rem 0.2rem 1rem;
+
+                .message-input {
+                    width: 100%;
+
+                    input.Mui-disabled {
+                        opacity: 0.6;
+                    }
+                }
+
+                .MuiFormControl-root {
+                    width: 100%;
+
+                }
+
+
+                button.Mui-disabled {
+                    opacity: 0.6;
+                }
+
+
+            }
+        }
+    }
+
+    .right {
+        width: calc(60% - 1rem);
+        margin-left: 1rem;
+        background-color: var(--color-primary);
+        border-radius: 0.5rem;
+
+        .top-bar {
+            border-top-right-radius: 0.5rem;
+            border-top-left-radius: 0.5rem;
+            background-color: rgb(57, 107, 32);
+            height: $top-bar-height;
+            display: flex;
+            justify-content: left;
+            align-items: end;
+            padding: 0.3rem 0.5rem;
+
+            .top-bar-item {
+                color: var(--color-primary);
+                font-weight: bold;
+                text-align: left;
+            }
+        }
+    }
+}

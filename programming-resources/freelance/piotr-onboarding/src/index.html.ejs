@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="icon" href="favicon.ico" type="image/ico" />
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <title>Onboarding</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <% if (webpackConfig.mode == 'production') { %>
+        <script crossorigin src="https://unpkg.com/react@18.1.0/umd/react.production.min.js"></script>
+
+        <script crossorigin src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.production.min.js"></script>
+
+        <script
+            data-api="https://api.carybit.com/api/event"
+            defer
+            data-domain="roofing.carybit.com"
+            src="https://api.carybit.com/js/script.js"
+        ></script>
+        <% } else { %>
+        <script crossorigin src="https://unpkg.com/react@18.1.0/umd/react.development.js"></script>
+
+        <script crossorigin src="https://unpkg.com/react-dom@18.1.0/umd/react-dom.development.js"></script>
+        <% } %>
+    </body>
+</html>

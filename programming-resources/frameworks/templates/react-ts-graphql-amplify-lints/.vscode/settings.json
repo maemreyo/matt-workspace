@@ -1,0 +1,24 @@
+{
+  "[markdown]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.markdownlint": true
+  },
+  "cSpell.words": [
+    "awsconfig",
+    "chatgpt",
+    "clsx",
+    "commitlint",
+    "davinci",
+    "Gantt",
+    "GPTAPI",
+    "linebreak",
+    "mermaidjs",
+    "mindmap",
+    "Mindmaps",
+    "nocheck",
+    "reduxjs"
+  ]
+}

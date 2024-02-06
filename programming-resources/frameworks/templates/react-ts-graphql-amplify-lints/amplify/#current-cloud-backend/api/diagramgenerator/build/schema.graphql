@@ -1,0 +1,440 @@
+
+type User {
+  id: ID!
+  projects: [Project!]
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+type Project {
+  id: ID!
+  name: String!
+  userId: String!
+  projectId: ID!
+  mermaid: Mermaid
+  messages(createdAt: ModelStringKeyConditionInput, filter: ModelMessageFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelMessageConnection
+  createdAt: String!
+  updatedAt: AWSDateTime!
+}
+
+type Message {
+  id: ID!
+  projectId: ID!
+  messageId: String!
+  role: String!
+  content: String!
+  createdAt: String!
+  updatedAt: AWSDateTime!
+}
+
+type Mermaid {
+  id: ID!
+  projectId: ID!
+  content: String
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUserConnection {
+  items: [User]!
+  nextToken: String
+}
+
+input ModelUserFilterInput {
+  id: ModelIDInput
+  and: [ModelUserFilterInput]
+  or: [ModelUserFilterInput]
+  not: ModelUserFilterInput
+}
+
+type Query {
+  getUser(id: ID!): User
+  listUsers(filter: ModelUserFilterInput, limit: Int, nextToken: String): ModelUserConnection
+  getProject(id: ID!): Project
+  listProjects(filter: ModelProjectFilterInput, limit: Int, nextToken: String): ModelProjectConnection
+  getMessage(id: ID!): Message
+  listMessages(filter: ModelMessageFilterInput, limit: Int, nextToken: String): ModelMessageConnection
+  getMermaid(id: ID!): Mermaid
+  listMermaids(filter: ModelMermaidFilterInput, limit: Int, nextToken: String): ModelMermaidConnection
+  projectByUserId(userId: String!, createdAt: ModelStringKeyConditionInput, sortDirection: ModelSortDirection, filter: ModelProjectFilterInput, limit: Int, nextToken: String): ModelProjectConnection
+  messagesByProjectIdAndCreatedAt(projectId: ID!, createdAt: ModelStringKeyConditionInput, sortDirection: ModelSortDirection, filter: ModelMessageFilterInput, limit: Int, nextToken: String): ModelMessageConnection
+  mermaidsByProjectId(projectId: ID!, sortDirection: ModelSortDirection, filter: ModelMermaidFilterInput, limit: Int, nextToken: String): ModelMermaidConnection
+}
+
+input ModelUserConditionInput {
+  and: [ModelUserConditionInput]
+  or: [ModelUserConditionInput]
+  not: ModelUserConditionInput
+}
+
+input CreateUserInput {
+  id: ID
+}
+
+input UpdateUserInput {
+  id: ID!
+}
+
+input DeleteUserInput {
+  id: ID!
+}
+
+type Mutation {
+  createUser(input: CreateUserInput!, condition: ModelUserConditionInput): User
+  updateUser(input: UpdateUserInput!, condition: ModelUserConditionInput): User
+  deleteUser(input: DeleteUserInput!, condition: ModelUserConditionInput): User
+  createProject(input: CreateProjectInput!, condition: ModelProjectConditionInput): Project
+  updateProject(input: UpdateProjectInput!, condition: ModelProjectConditionInput): Project
+  deleteProject(input: DeleteProjectInput!, condition: ModelProjectConditionInput): Project
+  createMessage(input: CreateMessageInput!, condition: ModelMessageConditionInput): Message
+  updateMessage(input: UpdateMessageInput!, condition: ModelMessageConditionInput): Message
+  deleteMessage(input: DeleteMessageInput!, condition: ModelMessageConditionInput): Message
+  createMermaid(input: CreateMermaidInput!, condition: ModelMermaidConditionInput): Mermaid
+  updateMermaid(input: UpdateMermaidInput!, condition: ModelMermaidConditionInput): Mermaid
+  deleteMermaid(input: DeleteMermaidInput!, condition: ModelMermaidConditionInput): Mermaid
+}
+
+input ModelSubscriptionUserFilterInput {
+  id: ModelSubscriptionIDInput
+  and: [ModelSubscriptionUserFilterInput]
+  or: [ModelSubscriptionUserFilterInput]
+}
+
+type Subscription {
+  onCreateUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["createUser"])
+  onUpdateUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["updateUser"])
+  onDeleteUser(filter: ModelSubscriptionUserFilterInput): User @aws_subscribe(mutations: ["deleteUser"])
+  onCreateProject(filter: ModelSubscriptionProjectFilterInput): Project @aws_subscribe(mutations: ["createProject"])
+  onUpdateProject(filter: ModelSubscriptionProjectFilterInput): Project @aws_subscribe(mutations: ["updateProject"])
+  onDeleteProject(filter: ModelSubscriptionProjectFilterInput): Project @aws_subscribe(mutations: ["deleteProject"])
+  onCreateMessage(filter: ModelSubscriptionMessageFilterInput): Message @aws_subscribe(mutations: ["createMessage"])
+  onUpdateMessage(filter: ModelSubscriptionMessageFilterInput): Message @aws_subscribe(mutations: ["updateMessage"])
+  onDeleteMessage(filter: ModelSubscriptionMessageFilterInput): Message @aws_subscribe(mutations: ["deleteMessage"])
+  onCreateMermaid(filter: ModelSubscriptionMermaidFilterInput): Mermaid @aws_subscribe(mutations: ["createMermaid"])
+  onUpdateMermaid(filter: ModelSubscriptionMermaidFilterInput): Mermaid @aws_subscribe(mutations: ["updateMermaid"])
+  onDeleteMermaid(filter: ModelSubscriptionMermaidFilterInput): Mermaid @aws_subscribe(mutations: ["deleteMermaid"])
+}
+
+type ModelProjectConnection {
+  items: [Project]!
+  nextToken: String
+}
+
+input ModelProjectFilterInput {
+  id: ModelIDInput
+  name: ModelStringInput
+  userId: ModelStringInput
+  projectId: ModelIDInput
+  createdAt: ModelStringInput
+  and: [ModelProjectFilterInput]
+  or: [ModelProjectFilterInput]
+  not: ModelProjectFilterInput
+}
+
+input ModelProjectConditionInput {
+  name: ModelStringInput
+  userId: ModelStringInput
+  projectId: ModelIDInput
+  createdAt: ModelStringInput
+  and: [ModelProjectConditionInput]
+  or: [ModelProjectConditionInput]
+  not: ModelProjectConditionInput
+}
+
+input CreateProjectInput {
+  id: ID
+  name: String!
+  userId: String!
+  projectId: ID!
+  createdAt: String
+}
+
+input UpdateProjectInput {
+  id: ID!
+  name: String
+  userId: String
+  projectId: ID
+  createdAt: String
+}
+
+input DeleteProjectInput {
+  id: ID!
+}
+
+input ModelSubscriptionProjectFilterInput {
+  id: ModelSubscriptionIDInput
+  name: ModelSubscriptionStringInput
+  userId: ModelSubscriptionStringInput
+  projectId: ModelSubscriptionIDInput
+  createdAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionProjectFilterInput]
+  or: [ModelSubscriptionProjectFilterInput]
+}
+
+type ModelMessageConnection {
+  items: [Message]!
+  nextToken: String
+}
+
+input ModelMessageFilterInput {
+  id: ModelIDInput
+  projectId: ModelIDInput
+  messageId: ModelStringInput
+  role: ModelStringInput
+  content: ModelStringInput
+  createdAt: ModelStringInput
+  and: [ModelMessageFilterInput]
+  or: [ModelMessageFilterInput]
+  not: ModelMessageFilterInput
+}
+
+input ModelMessageConditionInput {
+  projectId: ModelIDInput
+  messageId: ModelStringInput
+  role: ModelStringInput
+  content: ModelStringInput
+  createdAt: ModelStringInput
+  and: [ModelMessageConditionInput]
+  or: [ModelMessageConditionInput]
+  not: ModelMessageConditionInput
+}
+
+input CreateMessageInput {
+  id: ID
+  projectId: ID!
+  messageId: String!
+  role: String!
+  content: String!
+  createdAt: String
+}
+
+input UpdateMessageInput {
+  id: ID!
+  projectId: ID
+  messageId: String
+  role: String
+  content: String
+  createdAt: String
+}
+
+input DeleteMessageInput {
+  id: ID!
+}
+
+input ModelSubscriptionMessageFilterInput {
+  id: ModelSubscriptionIDInput
+  projectId: ModelSubscriptionIDInput
+  messageId: ModelSubscriptionStringInput
+  role: ModelSubscriptionStringInput
+  content: ModelSubscriptionStringInput
+  createdAt: ModelSubscriptionStringInput
+  and: [ModelSubscriptionMessageFilterInput]
+  or: [ModelSubscriptionMessageFilterInput]
+}
+
+type ModelMermaidConnection {
+  items: [Mermaid]!
+  nextToken: String
+}
+
+input ModelMermaidFilterInput {
+  id: ModelIDInput
+  projectId: ModelIDInput
+  content: ModelStringInput
+  and: [ModelMermaidFilterInput]
+  or: [ModelMermaidFilterInput]
+  not: ModelMermaidFilterInput
+}
+
+input ModelMermaidConditionInput {
+  projectId: ModelIDInput
+  content: ModelStringInput
+  and: [ModelMermaidConditionInput]
+  or: [ModelMermaidConditionInput]
+  not: ModelMermaidConditionInput
+}
+
+input CreateMermaidInput {
+  id: ID
+  projectId: ID!
+  content: String
+}
+
+input UpdateMermaidInput {
+  id: ID!
+  projectId: ID
+  content: String
+}
+
+input DeleteMermaidInput {
+  id: ID!
+}
+
+input ModelSubscriptionMermaidFilterInput {
+  id: ModelSubscriptionIDInput
+  projectId: ModelSubscriptionIDInput
+  content: ModelSubscriptionStringInput
+  and: [ModelSubscriptionMermaidFilterInput]
+  or: [ModelSubscriptionMermaidFilterInput]
+}
+
+input ModelStringKeyConditionInput {
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  between: [String]
+  beginsWith: String
+}
+

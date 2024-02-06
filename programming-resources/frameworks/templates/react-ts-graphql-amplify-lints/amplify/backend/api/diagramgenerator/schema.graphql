@@ -1,0 +1,39 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY {
+  globalAuthRule: AuthRule = { allow: public }
+} # FOR TESTING ONLY!
+type User @model {
+  id: ID!
+  projects: [Project!]
+}
+
+type Project @model {
+  id: ID!
+  name: String!
+  userId: String!
+    @index(
+      name: "projectByUserId"
+      queryField: "projectByUserId"
+      sortKeyFields: ["createdAt"]
+    )
+  projectId: ID!
+  mermaid: Mermaid @hasOne(fields: ["projectId"])
+  messages: [Message] @hasMany(indexName: "byProject", fields: ["projectId"])
+  createdAt: String!
+}
+
+type Message @model {
+  id: ID!
+  projectId: ID! @index(name: "byProject", sortKeyFields: ["createdAt"])
+  messageId: String!
+  role: String!
+  content: String!
+  createdAt: String!
+}
+
+type Mermaid @model {
+  id: ID!
+  projectId: ID! @index(name: "mermaidByProjectId")
+  content: String
+}

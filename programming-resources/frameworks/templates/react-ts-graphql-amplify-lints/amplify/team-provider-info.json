@@ -1,0 +1,23 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-diagramgenerator-dev-163517-authRole",
+      "UnauthRoleArn": "arn:aws:iam::550738855711:role/amplify-diagramgenerator-dev-163517-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::550738855711:role/amplify-diagramgenerator-dev-163517-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-diagramgenerator-dev-163517-deployment",
+      "UnauthRoleName": "amplify-diagramgenerator-dev-163517-unauthRole",
+      "StackName": "amplify-diagramgenerator-dev-163517",
+      "StackId": "arn:aws:cloudformation:eu-central-1:550738855711:stack/amplify-diagramgenerator-dev-163517/379595e0-bc02-11ed-969d-0241259ef0de",
+      "AmplifyAppId": "d2lhhhv82kg6lh"
+    },
+    "categories": {
+      "auth": {
+        "diagramgenerator233009da": {}
+      },
+      "api": {
+        "diagramgenerator": {}
+      }
+    }
+  }
+}

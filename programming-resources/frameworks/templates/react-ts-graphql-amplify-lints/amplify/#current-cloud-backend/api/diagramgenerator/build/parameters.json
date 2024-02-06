@@ -1,0 +1,7 @@
+{
+  "AppSyncApiName": "diagramgenerator",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "S3DeploymentBucket": "amplify-diagramgenerator-dev-163517-deployment",
+  "S3DeploymentRootKey": "amplify-appsync-files/15c5f02a91a7b1c5071ec9a45d957fed555d8d1b"
+}

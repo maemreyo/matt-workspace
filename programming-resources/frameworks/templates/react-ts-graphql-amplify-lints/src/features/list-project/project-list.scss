@@ -1,0 +1,117 @@
+@import "../../root.scss";
+
+.project-list {
+    background-color: var(--color-secondary);
+    max-width: 380px;
+    min-width: 380px;
+    height: 100vh;
+    color: var(--color-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .list {
+        padding: 1rem;
+        // max-height: 60vh;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .project-item {
+        margin-bottom: 1.5rem;
+        border: 2px solid var(--color-primary);
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+
+        .content {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            .icon.chat {
+                padding: 0.8rem;
+            }
+
+            .button {
+                padding: 0.5rem 0;
+
+                .name span {
+                    width: calc(100% - 4.5rem);
+                    font-weight: 600;
+                    text-overflow: ellipsis;
+                    overflow-x: hidden;
+                    white-space: nowrap;
+                }
+
+                .name input {
+                    color: var(--color-primary);
+                    font-weight: bold;
+                }
+            }
+
+        }
+
+        .control {
+            display: flex;
+
+            .icon {
+                cursor: pointer;
+            }
+
+            .edit,
+            .done {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    .project-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .control {
+        padding: 1rem;
+
+        .form-area {
+            .form-control {
+                background-color: var(--color-primary);
+                border-radius: 8px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .input {
+                    width: 100%;
+                    padding: 1rem;
+                }
+            }
+        }
+
+        .clear-all-project {
+            width: 100%;
+            padding: 0.6rem 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: start;
+
+            color: var(--color-primary);
+            font-weight: bold;
+
+            border: 1px solid var(--color-primary);
+
+            span svg {
+                color: var(--color-primary);
+                font-size: 1.8rem;
+            }
+        }
+    }
+}
